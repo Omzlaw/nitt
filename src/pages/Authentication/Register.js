@@ -45,8 +45,8 @@ const Register = props => {
                 <div className="bg-login text-center">
                   <div className="bg-login-overlay"></div>
                   <div className="position-relative">
-                    <h5 className="text-white font-size-20">Free Register</h5>
-                    <p className="text-white-50 mb-0">Get your free Qovex account now</p>
+                    <h5 className="text-white font-size-20">Register</h5>
+                    <p className="text-white-50 mb-0">Get your NITT Dashboard account now</p>
                     <Link to="/" className="logo logo-admin mt-4">
                       <img src={logo} alt="" height="30" />
                     </Link>
@@ -69,10 +69,10 @@ const Register = props => {
 
                       {props.registrationError &&
                         props.registrationError ? (
-                          <Alert color="danger">
-                            {props.registrationError}
-                          </Alert>
-                        ) : null}
+                        <Alert color="danger">
+                          {props.registrationError}
+                        </Alert>
+                      ) : null}
 
                       <div className="mb-3">
                         <AvField
@@ -116,7 +116,7 @@ const Register = props => {
 
                       <div className="mt-4 text-center">
                         <p className="mb-0">
-                          By registering you agree to the Qovex{" "}
+                          By registering you agree to the NITT{" "}
                           <Link to="#" className="text-primary">
                             Terms of Use
                           </Link>
@@ -130,13 +130,12 @@ const Register = props => {
               <div className="mt-5 text-center">
                 <p>Already have an account ? <a href="/login" className="fw-medium text-primary">
                   Login</a> </p>
-                <p>© {new Date().getFullYear()} Qovex. Crafted with <i
-                    className="mdi mdi-heart text-danger"></i> by Themesbrand
-                        </p>
+                <p>© {new Date().getFullYear()} NITT.
+                </p>
               </div>
             </Col>
           </Row>
-          </Container>
+        </Container>
       </div>
     </React.Fragment>
   )

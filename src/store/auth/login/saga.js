@@ -12,10 +12,12 @@ import {
   postSocialLogin,
 } from "../../../helpers/fakebackend_helper"
 
+import { postLogin } from "../../../helpers/backend_helper"
+
 const fireBaseBackend = getFirebaseBackend()
 
 function* loginUser({ payload: { user, history } }) {
-  
+
   try {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       const response = yield call(
@@ -32,14 +34,20 @@ function* loginUser({ payload: { user, history } }) {
       localStorage.setItem("authUser", JSON.stringify(response))
       yield put(loginSuccess(response))
     } else if (process.env.REACT_APP_DEFAULTAUTH === "fake") {
-      
+
       const response = yield call(postFakeLogin, {
         email: user.email,
         password: user.password,
       })
-      
+
       localStorage.setItem("authUser", JSON.stringify(response))
       yield put(loginSuccess(response))
+    } else if (process.env.REACT_APP_DEFAULTAUTH === "backend") {
+      const response = yield call(postLogin, {
+        email: user.email,
+        password: user.password,
+      })
+      yield put(loginSuccess(response));
     }
     history.push("/dashboard")
   } catch (error) {
